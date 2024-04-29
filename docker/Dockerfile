@@ -20,8 +20,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Create a working directory.
 RUN mkdir /app
 WORKDIR /app
-
+RUN apt-get update
+RUN apt-get install dos2unix
 COPY scripts/setup.sh requirements/server.txt /app
+#fix the .sh file
+RUN dos2unix setup.sh
 
 RUN apt update && bash setup.sh && rm setup.sh
 RUN pip install -r server.txt && rm server.txt

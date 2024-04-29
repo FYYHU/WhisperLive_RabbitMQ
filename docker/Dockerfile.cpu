@@ -15,8 +15,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /app
 
 COPY scripts/setup.sh requirements/server.txt /app/
-
-RUN apt update && bash setup.sh && pip install -r server.txt
+RUN apt update && apt-get install dos2unix
+RUN dos2unix setup.sh
+RUN bash setup.sh && pip install -r server.txt
 
 COPY whisper_live /app/whisper_live
 COPY run_server.py /app
