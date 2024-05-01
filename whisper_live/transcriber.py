@@ -21,9 +21,8 @@ from faster_whisper.vad import (
     SpeechTimestampsMap,
     VadOptions,
     collect_chunks,
-    get_speech_timestamps,
 )
-
+from whisper_live.faster_whisper_track import get_speech_timestamps
 
 class Word(NamedTuple):
     start: float
